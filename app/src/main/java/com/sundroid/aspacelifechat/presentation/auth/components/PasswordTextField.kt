@@ -15,9 +15,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import com.sundroid.aspacelifechat.R
 
 @Composable
 fun PasswordTextField(value: String, onValueChange: (String) -> Unit) {
@@ -30,9 +32,9 @@ fun PasswordTextField(value: String, onValueChange: (String) -> Unit) {
         visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
-            val image = if (passwordVisible.value) Icons.Filled.Done else Icons.Filled.Clear
+            val image = if (passwordVisible.value) R.drawable.visibility_off else R.drawable.visibility_on
             IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
-                Icon(imageVector = image, contentDescription = null)
+                Icon(painter = painterResource(image), contentDescription = null)
             }
         }
     )
